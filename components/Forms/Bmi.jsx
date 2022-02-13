@@ -3,10 +3,6 @@ import {
     Text,
     SimpleGrid,
     Input,
-    Img,
-    VStack,
-    StackDivider,
-    Textarea,
     Button,
     Box,
     Stack,
@@ -21,6 +17,9 @@ import { useState } from 'react';
 
 export const Bmi = (props) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [bmiVal, setBmiVal] = useState(0);
+    const [bmiText, setBmiText] = useState('');
+    const [color, setColor] = useState('#ffffff');
 
 
     const handleSubmit = async (event) => {
@@ -29,18 +28,33 @@ export const Bmi = (props) => {
         const height = document.getElementById('height').value;
         const weight = document.getElementById('weight').value;
         const bmi = (weight / height ** 2).toFixed(2);
-        const bg = document.getElementById('bg').style.backgroundColor;
+        const bg = document.getElementById('bg');
 
-        if (bmi > 35) {
-
+        if (bmi > 34.9) {
+            setColor('red.500')
+            setBmiText('Extremely Obese');
         }
-
-        document.getElementById('bmi').innerText = bmi;
-        document.getElementById('bg').style.backgroundColor = '#ffffff'
-
+        else if (bmi > 30) {
+            setColor('red.300')
+            setBmiText('Obese');
+        }
+        else if (bmi > 25) {
+            setColor('yellow.300');
+            setBmiText('Overweight');
+        }
+        else if (bmi > 18.5) {
+            setColor('green.300');
+            setBmiText('Normal');
+        }
+        else {
+            setColor('blue.300');
+            setBmiText('Underweight');
+        }
+        setBmiVal(bmi);
         setIsOpen(true);
+    }
 
-    };
+
 
     return (
         <>
@@ -71,24 +85,25 @@ export const Bmi = (props) => {
                         <Box
                             p='40px'
                             id='bg'
-                            mt='4'
-                            bg='red.200'
+                            bg={color}
                             rounded='md'
                             shadow='md'
                             color='black.light'
                         >
                             <Text fontSize='2xl' fontWeight='bold'>Your BMI:</Text>
-                            <Text id='bmi' fontSize='xl'>BMI</Text>
+                            <Text id='bmi' fontSize='xl'>{bmiVal}</Text>
+                            <Text fontSize='lg' fontWeight='bold'>{bmiText}</Text>
                         </Box>
                     </Collapse>
                 </Box>
             </SimpleGrid >
 
+            <Text mt='4' fontSize='md' fontStyle='italic' fontWeight=''>*BMI alone is not always an accurate representation one&apos;s health</Text>
+
         </>
 
     )
 }
-
 function round(num, decimalPlaces = 0) {
     num = Math.round(num + "e" + decimalPlaces);
     return Number(num + "e" + -decimalPlaces);

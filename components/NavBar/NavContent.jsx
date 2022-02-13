@@ -19,8 +19,12 @@ const links = [
         href: '/predict',
     },
     {
-        label: 'About',
-        href: '/about',
+        label: 'Prevention',
+        href: '/prevention',
+    },
+    {
+        label: 'BMI Calculator',
+        href: '/bmi',
     }
 ]
 

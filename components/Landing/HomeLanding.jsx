@@ -8,9 +8,6 @@ import {
     Button,
     Image,
     Icon,
-    IconButton,
-    createIcon,
-    IconProps,
     useColorModeValue,
 } from '@chakra-ui/react';
 import { ArrowForwardIcon } from '@chakra-ui/icons';
@@ -48,7 +45,7 @@ export function HomeLanding() {
                         <Button
                             rounded={'md'}
                             as='a'
-                            href='/detect'
+                            href='/predict'
                             size={'lg'}
                             px={6}
                             colorScheme={'red'}
@@ -56,7 +53,7 @@ export function HomeLanding() {
                             fontWeight="bold"
                             rightIcon={<ArrowForwardIcon h={4} w={4} color={'white.off'} />}
                             _hover={{ bg: 'red.500' }}>
-                            Detect
+                            Predict
                         </Button>
                         <Button
                             rounded={'md'}
@@ -98,7 +95,7 @@ export function HomeLanding() {
                             w={'100%'}
                             h={'100%'}
                             src={
-                                'heart_landing.jpeg'
+                                'prevent.jpeg'
                             }
                         />
                     </Box>

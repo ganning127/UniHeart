@@ -44,10 +44,8 @@ const LinkItems = [
     { name: 'BMI Calculator', icon: BsCalculator, href: '/bmi' }
 ];
 
-export function Sidebar({
-    active,
-    children,
-}) {
+export const Sidebar = ({ active, children }) => {
+    // console.log(active)
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
         <Box minH="100vh" bg={useColorModeValue('gray.50', 'gray.900')}>
@@ -78,6 +76,7 @@ export function Sidebar({
 }
 
 const SidebarContent = ({ onClose, active, ...rest }) => {
+    console.log(active)
     return (
         <Box
             transition="3s ease"

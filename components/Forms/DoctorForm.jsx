@@ -24,7 +24,7 @@ import {
     Select,
     NumberDecrementStepper, Radio, RadioGroup
 } from '@chakra-ui/react'
-import { HeadingWithDesc } from '@components/Headings/HeadingWithDesc';
+
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { modelPredict, transformLabData } from 'lib/HeartModel';
 import { useState } from 'react';
