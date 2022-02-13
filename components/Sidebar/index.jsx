@@ -7,6 +7,7 @@ import {
     Flex,
     HStack,
     VStack,
+    ScaleFade,
     Icon,
     useColorModeValue,
     Link,
@@ -14,8 +15,6 @@ import {
     DrawerContent,
     Text,
     useDisclosure,
-    BoxProps,
-    FlexProps,
     Menu,
     MenuButton,
     MenuDivider,
@@ -25,22 +24,19 @@ import {
 } from '@chakra-ui/react';
 import {
     FiHome,
-    FiTrendingUp,
-    FiCompass,
-    FiStar,
-    FiSettings,
     FiMenu,
     FiBell,
     FiChevronDown,
 } from 'react-icons/fi';
 import { MdLightbulbOutline, MdOutlineHealthAndSafety } from 'react-icons/md'
-import { AiOutlineHeart } from 'react-icons/ai'
+import { AiOutlineHeart, AiOutlineCheckCircle } from 'react-icons/ai'
 import { BsCalculator } from 'react-icons/bs'
 
 const LinkItems = [
     { name: 'Home', icon: FiHome, href: '/' },
     { name: 'Predict', icon: AiOutlineHeart, href: '/predict' },
     { name: 'Prevention', icon: MdOutlineHealthAndSafety, href: '/prevention' },
+
     { name: 'BMI Calculator', icon: BsCalculator, href: '/bmi' }
 ];
 
@@ -163,21 +159,49 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 icon={<FiMenu />}
             />
 
-            <Text
-                display={{ base: 'flex', md: 'none' }}
-                fontSize="2xl"
-                fontFamily="monospace"
-                fontWeight="bold">
-                Logo
-            </Text>
+
+            <Img
+                src="/logo.png"
+                h="12"
+                display={{ base: 'inline', md: 'none' }}
+                mr="3"
+                mt="-1"
+            />
 
             <HStack spacing={{ base: '0', md: '6' }}>
-                <IconButton
-                    size="lg"
-                    variant="ghost"
-                    aria-label="open menu"
-                    icon={<FiBell />}
-                />
+                <Menu>
+                    <MenuButton>
+                        <IconButton
+                            size="lg"
+                            variant="ghost"
+                            aria-label="open menu"
+                            icon={<FiBell />}
+                        />
+
+
+                    </MenuButton>
+                    <MenuList
+                        bg={useColorModeValue('white', 'gray.900')}
+                        borderColor={useColorModeValue('gray.200', 'gray.700')}>
+                        <MenuItem>
+                            <Box d='flex' alignItems='center' color='gray.500'>
+                                <Icon as={AiOutlineCheckCircle} mr='2' />
+                                <Text fontSize="sm" fontWeight="semibold">
+                                    Completed your check for today!
+                                </Text>
+                            </Box>
+                        </MenuItem>
+                        <MenuItem>
+                            <Box d='flex' alignItems='center' color='gray.500'>
+                                <Icon as={AiOutlineHeart} mr='2' />
+                                <Text fontSize="sm" fontWeight="semibold">
+                                    Negative prediction for heart disease!
+                                </Text>
+                            </Box>
+                        </MenuItem>
+                    </MenuList>
+                </Menu>
+
                 <Flex alignItems={'center'}>
                     <Menu>
                         <MenuButton

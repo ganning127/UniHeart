@@ -61,6 +61,8 @@ export function HomeLanding() {
                             about='/about'
                             px={6}
                             fontWeight="bold"
+                            as='a'
+                            href='#models'
                         >
                             How It Works
                         </Button>
