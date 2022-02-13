@@ -45,7 +45,7 @@ export const DoctorForm = () => {
         // const chestPainType = document.getElementById('chestPainType').value;
         const restingBP = document.getElementById('restingBP').value;
         const cholesterol = document.getElementById('cholesterol').value;
-        const fastingBS = document.getElementById('fastingBS').value;
+        const fastingBS = parseInt(document.getElementById('fastingBS').value);
         // const restingECG = document.getElementById('restingECG').value;
         const maxHR = document.getElementById('maxHR').value;
         // const exerciseAngina = document.getElementById('exerciseAngina').value;
@@ -146,6 +146,7 @@ export const DoctorForm = () => {
                                     <NumberDecrementStepper />
                                 </NumberInputStepper>
                             </NumberInput>
+
                         </FormControl>
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
@@ -160,14 +161,11 @@ export const DoctorForm = () => {
                         </FormControl>
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
-                            <FormLabel>Fasting Blood Sugar (mg/dl)</FormLabel>
-                            <NumberInput id='fastingBS' defaultValue={100}>
-                                <NumberInputField />
-                                <NumberInputStepper>
-                                    <NumberIncrementStepper />
-                                    <NumberDecrementStepper />
-                                </NumberInputStepper>
-                            </NumberInput>
+                            <FormLabel>Fasting Blood Sugar (yes if above 120 mg/dl)</FormLabel>
+                            <Select id='fastingBS'>
+                                <option value='1'>Yes</option>
+                                <option value='0'>No</option>
+                            </Select>
                         </FormControl>
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
