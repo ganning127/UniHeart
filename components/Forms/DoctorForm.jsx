@@ -192,7 +192,7 @@ export const DoctorForm = () => {
                         </FormControl>
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
-                            <FormLabel>MaxHR (BPM, between 60-202)</FormLabel>
+                            <FormLabel>Max Heart Rate(BPM, between 60-202)</FormLabel>
                             <NumberInput id='maxHR' defaultValue={100}>
                                 <NumberInputField />
                                 <NumberInputStepper>
@@ -217,7 +217,7 @@ export const DoctorForm = () => {
                         </FormControl>
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
-                            <FormLabel>Oldpeak ST (Integer value measured in depression)</FormLabel>
+                            <FormLabel>Oldpeak (Integer value measured in depression)</FormLabel>
                             <NumberInput id='oldpeak' defaultValue={1}>
                                 <NumberInputField />
                                 <NumberInputStepper>
