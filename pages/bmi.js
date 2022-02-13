@@ -14,7 +14,7 @@ export default function BmiCalc() {
             <Head>
                 <title>BMI Calculator - UniHeart</title>
             </Head>
-            <Sidebar active='about'>
+            <Sidebar active='bmi calculator'>
                 <Container maxW='container.lg' p={4}>
                     <Bmi />
 
