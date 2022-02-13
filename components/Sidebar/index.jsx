@@ -35,13 +35,13 @@ import {
 } from 'react-icons/fi';
 import { MdLightbulbOutline, MdOutlineHealthAndSafety } from 'react-icons/md'
 import { AiOutlineHeart } from 'react-icons/ai'
+import { BsCalculator } from 'react-icons/bs'
 
 const LinkItems = [
     { name: 'Home', icon: FiHome, href: '/' },
-    { name: 'Detect', icon: AiOutlineHeart, href: '/detect' },
+    { name: 'Predict', icon: AiOutlineHeart, href: '/predict' },
     { name: 'Prevention', icon: MdOutlineHealthAndSafety, href: '/prevention' },
-    { name: 'About', icon: MdLightbulbOutline, href: '/about' },
-    { name: 'Settings', icon: FiSettings },
+    { name: 'BMI Calculator', icon: BsCalculator, href: '/bmi' }
 ];
 
 export function Sidebar({
@@ -54,6 +54,7 @@ export function Sidebar({
             <SidebarContent
                 onClose={() => onClose}
                 display={{ base: 'none', md: 'block' }}
+                active={active}
             />
             <Drawer
                 autoFocus={false}
@@ -108,6 +109,7 @@ const SidebarContent = ({ onClose, active, ...rest }) => {
 };
 
 const NavItem = ({ icon, children, href, active, ...rest }) => {
+    console.log(children)
     return (
         <Link href={href} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
             <Flex
@@ -118,10 +120,11 @@ const NavItem = ({ icon, children, href, active, ...rest }) => {
                 role="group"
                 cursor="pointer"
                 fontWeight='semibold'
-                color='black.light'
+                bg={active === children.toLowerCase() ? 'red.400' : 'transparent'}
+                color={active === children.toLowerCase() ? 'white.off' : 'black.light'}
                 transition='all 0.2s'
                 _hover={{
-                    bg: 'red.400',
+                    bg: 'red.200',
                     color: 'white',
                 }}
                 {...rest}>
@@ -137,7 +140,7 @@ const NavItem = ({ icon, children, href, active, ...rest }) => {
                 )}
                 {children}
             </Flex>
-        </Link>
+        </Link >
     );
 };
 

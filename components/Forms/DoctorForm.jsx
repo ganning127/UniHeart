@@ -3,6 +3,10 @@ import {
     Text,
     SimpleGrid,
     Input,
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
     Container,
     VStack,
     Button,
@@ -22,32 +26,62 @@ import {
 } from '@chakra-ui/react'
 import { HeadingWithDesc } from '@components/Headings/HeadingWithDesc';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { modelPredict, transformLabData } from 'lib/HeartModel';
 import { useState } from 'react';
 
 export const DoctorForm = () => {
+    const [chestType, setChestType] = useState('TA');
+    const [exerciseAngina, setExerciseAngina] = useState('N');
+    const [restingECG, setRestingECG] = useState('Normal');
+    const [slope, setSlope] = useState('Flat');
+    const [res, setRes] = useState('');
+    const [submitted, setIsSubmitted] = useState(false);
+    const [status, setStatus] = useState('success');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const age = document.getElementById('age').value;
+        const sex = document.getElementById('sex').value;
+        // const chestPainType = document.getElementById('chestPainType').value;
+        const restingBP = document.getElementById('restingBP').value;
+        const cholesterol = document.getElementById('cholesterol').value;
+        const fastingBS = document.getElementById('fastingBS').value;
+        // const restingECG = document.getElementById('restingECG').value;
+        const maxHR = document.getElementById('maxHR').value;
+        // const exerciseAngina = document.getElementById('exerciseAngina').value;
+        const oldpeak = document.getElementById('oldpeak').value;
+        // const sl_slope = document.getElementById('sl_slope').value;
+
+        const data = {
+            "Age": age,
+            "Sex": sex,
+            "ChestPainType": chestType,
+            "RestingBP": restingBP,
+            "Cholesterol": cholesterol,
+            "FastingBS": fastingBS,
+            "RestingECG": restingECG,
+            "MaxHR": maxHR,
+            "ExerciseAngina": exerciseAngina,
+            "Oldpeak": oldpeak,
+            "ST_Slope": slope,
+        }
+
+        const res = modelPredict("model_lab", transformLabData(data));
+        console.log(res);
+        const res_str = res === "1" ? "At risk" : "Not at risk";
+        const bg = res === "1" ? "error" : "success";
+        console.log(bg);
+        setStatus(bg);
+        setRes(res_str);
+        setIsSubmitted(true);
     }
 
-    /*
- console.log(
-        modelPredict("model_lab", transformData({
-            "Age": 38,
-            "Sex": "M",
-            "ChestPainType": "ASY",
-            "RestingBP": 110,
-            "Cholesterol": 196,
-            "FastingBS": 0,
-            "RestingECG": "Normal",
-            "MaxHR": 166,
-            "ExerciseAngina": "N",
-            "Oldpeak": 0,
-            "ST_Slope": "Flat",
-        })))
-*/
     return (
         <Container maxW='container.lg'>
+            <Text fontWeight='bold' mb='4' color='red.400'>
+                The lab prediction is more technical and relies on data from blood tests.
+            </Text>
+
             <Formik
                 initialValues={{ name: 'Sasuke' }}
                 onSubmit={(values, actions) => {
@@ -58,7 +92,7 @@ export const DoctorForm = () => {
                 }}
             >
                 <Form>
-                    <VStack
+                    {!submitted && <VStack
                         divider={<StackDivider borderColor='gray.200' />}
                         spacing={4}
                         align='stretch'
@@ -76,7 +110,7 @@ export const DoctorForm = () => {
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
                             <FormLabel>Sex</FormLabel>
-                            <Select placeholder='sex'>
+                            <Select id='sex'>
                                 <option value='M'>Male</option>
                                 <option value='F'>Female</option>
                             </Select>
@@ -84,29 +118,21 @@ export const DoctorForm = () => {
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
                             <FormLabel>Chest Pain Type</FormLabel>
-                            <RadioGroup defaultValue='2' id='chestPainType'>
+                            <RadioGroup onChange={e => setChestType(e)} value={chestType}>
                                 <Stack spacing={5} direction='row'>
-                                    <Tooltip hasArrow label='Typical Angina'>
-                                        <Radio colorScheme='red' value='TA'>
-                                            TA
-                                        </Radio>
-                                    </Tooltip>
-                                    <Tooltip hasArrow label='ATypical Angina'>
-                                        <Radio colorScheme='green' value='ATA'>
-                                            ATA
-                                        </Radio>
-                                    </Tooltip>
-                                    <Tooltip hasArrow label='Non-Anginal Pain'>
-                                        <Radio colorScheme='blue' value='NAP'>
-                                            NAP
-                                        </Radio>
-                                    </Tooltip>
+                                    <Radio colorScheme='red' value='TA'>
+                                        Typical Angina
+                                    </Radio>
+                                    <Radio colorScheme='green' value='ATA'>
+                                        ATypical Angina
+                                    </Radio>
+                                    <Radio colorScheme='blue' value='NAP'>
+                                        Non-Anginal Pain
+                                    </Radio>
 
-                                    <Tooltip hasArrow label='Asymptomatic'>
-                                        <Radio colorScheme='orange' value='ASY'>
-                                            ASY
-                                        </Radio>
-                                    </Tooltip>
+                                    <Radio colorScheme='orange' value='ASY'>
+                                        Asymptomatic
+                                    </Radio>
                                 </Stack>
                             </RadioGroup>
                         </FormControl>
@@ -146,7 +172,7 @@ export const DoctorForm = () => {
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
                             <FormLabel>Resting ECG (mg/dl)</FormLabel>
-                            <RadioGroup defaultValue='2' id='restingECG'>
+                            <RadioGroup defaultValue='2' id='restingECG' onChange={e => setRestingECG(e)} value={restingECG}>
                                 <Stack spacing={5} direction='row'>
                                     <Radio colorScheme='red' value='Normal'>
                                         Normal
@@ -178,7 +204,7 @@ export const DoctorForm = () => {
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
                             <FormLabel>Exercise Angina (exercise-induced angina)</FormLabel>
-                            <RadioGroup defaultValue='2' id='exerciseAngina'>
+                            <RadioGroup id='exerciseAngina' onChange={e => setExerciseAngina(e)} value={exerciseAngina}>
                                 <Stack spacing={5} direction='row'>
                                     <Radio colorScheme='red' value='Y'>
                                         Yes
@@ -205,7 +231,7 @@ export const DoctorForm = () => {
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
                             <FormLabel>ST Slope (the slope of the peak exercise ST segment)</FormLabel>
-                            <RadioGroup defaultValue='2' id='sl_slop'>
+                            <RadioGroup defaultValue='2' id='sl_slope' onChange={e => setSlope(e)} value={slope}>
                                 <Stack spacing={5} direction='row'>
                                     <Radio colorScheme='red' value='Up'>
                                         Up
@@ -220,11 +246,25 @@ export const DoctorForm = () => {
                             </RadioGroup>
                         </FormControl>
 
-
-
-                        <Button color="white" bg="blue.shade" _hover={{ bg: "blue.shade.hover" }} type="submit">Submit</Button>
-                    </VStack>
-                    <Text bg='red.100' mt='4' p='1' rounded='lg' d='none' id='error'>There was an error, please refresh the page and try again!</Text>
+                        <Button color="white" bg="red.400" _hover={{ bg: "red.500" }} type="submit" onClick={handleSubmit}>Submit</Button>
+                    </VStack>}
+                    {submitted && <Alert
+                        status={status}
+                        variant='subtle'
+                        flexDirection='column'
+                        alignItems='center'
+                        justifyContent='center'
+                        textAlign='center'
+                        height='200px'
+                    >
+                        <AlertIcon boxSize='40px' mr={0} />
+                        <AlertTitle mt={4} mb={1} fontSize='lg'>
+                            Prediction: {res}!
+                        </AlertTitle>
+                        <AlertDescription maxWidth='sm' fontStyle='italic'>
+                            Note: UniHeart is not a medical device and does not diagnose or treat conditions.
+                        </AlertDescription>
+                    </Alert>}
                 </Form>
             </Formik>
         </Container >

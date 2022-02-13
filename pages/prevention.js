@@ -13,7 +13,7 @@ export default function Home() {
             <Head>
                 <title>Prevention - UniHeart</title>
             </Head>
-            <Sidebar active='about'>
+            <Sidebar active='prevention'>
                 <Container maxW='container.lg' p={4}>
                     <HeadingWithDesc align='left'>
                         Exercise

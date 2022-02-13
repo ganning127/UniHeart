@@ -10,9 +10,8 @@ export default function Home() {
       <Head>
         <title>UniHeart</title>
       </Head>
-      <NavBar active='home'>
-        <HomeLanding />
-      </NavBar>
+      <NavBar active='home' />
+      <HomeLanding />
 
     </>
   )
