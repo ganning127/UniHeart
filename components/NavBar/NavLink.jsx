@@ -4,13 +4,14 @@ import * as React from 'react'
 const DesktopNavLink = (props) => {
     return (
         <chakra.a
-            fontWeight="medium"
             display="flex"
             alignItems="center"
             justifyContent="center"
             borderBottom="2px"
             borderColor="transparent"
             transition="all 0.2s"
+            fontSize="xl"
+            fontWeight='bold'
             _hover={{
                 color: 'red.light'
             }}

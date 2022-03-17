@@ -6,6 +6,7 @@ import {
     StackDivider,
     useDisclosure,
     Button,
+    ChakraProvider,
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { HiOutlineMenu, HiX } from 'react-icons/hi'
@@ -74,6 +75,15 @@ const DesktopNavContent = (props) => {
             setLoggedIn(true)
         }
     }, [])
+
+    let bg = 'red.400'
+    let color = 'white'
+    let hover = 'red.500'
+    if (props.active === 'login') {
+        bg = 'transparent'
+        color = 'red.400'
+        hover = ''
+    }
     return (
         <HStack spacing="8" align="stretch" {...props}>
             {links.map((link, index) => (
@@ -84,7 +94,7 @@ const DesktopNavContent = (props) => {
                 // </NavLink.Desktop>
 
                 // <motion.a key={index} whileHover={{ scale: 1.1  }}>
-                <NavLink.Desktop key={index} href={link.href} fontSize="xl" fontWeight="bold" color={props.active === link.label.toLowerCase() ? 'red.500' : 'black.light'}>
+                <NavLink.Desktop key={index} href={link.href} color={props.active === link.label.toLowerCase() ? 'red.500' : 'black.light'}>
                     {link.label}
                 </NavLink.Desktop>
                 // </motion.a>
@@ -94,10 +104,13 @@ const DesktopNavContent = (props) => {
                 loggedIn ?
                     <User />
                     :
-                    <Button bg='red.400' _hover={{ bg: 'red.500' }} color='white' as='a' href='/login'>
-                        Login
+                    <Button bg={bg} _hover={{ bg: hover }} color={color} as='a' href='/login'>
+                        <NavLink.Desktop>
+                            Login
+                        </NavLink.Desktop>
                     </Button>
             }
+
 
 
         </HStack >

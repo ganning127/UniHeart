@@ -20,6 +20,7 @@ import {
     Icon,
 } from '@chakra-ui/react';
 import Head from 'next/head'
+import { NavBar } from '@components/NavBar';
 
 import { Formik, Form } from 'formik';
 import { useEffect, useState } from 'react'
@@ -100,6 +101,7 @@ export default function Login() {
             <Head>
                 <title>Login - UniHeart</title>
             </Head>
+            <NavBar active='login' />
             <Box position={'relative'}>
                 <Container
                     as={SimpleGrid}
@@ -131,7 +133,7 @@ export default function Login() {
                                         key={avatar.name}
                                         name={avatar.name}
                                         src={avatar.url}
-                                        size={{ base: 'md', md: 'lg' }}
+                                        size='lg'
                                         position={'relative'}
                                         zIndex={2}
                                         _before={{

@@ -29,6 +29,10 @@ import {
 } from 'react-icons/fi';
 
 export const User = ({ active, children }) => {
+    const handleSignOut = () => {
+        localStorage.removeItem('uniheart_login_state')
+        window.location.href = '/'
+    }
     return (
         <Flex alignItems={'center'}>
             <Menu>
@@ -64,7 +68,7 @@ export const User = ({ active, children }) => {
                     <MenuItem>Profile</MenuItem>
                     <MenuItem>Settings</MenuItem>
                     <MenuDivider />
-                    <MenuItem>Sign out</MenuItem>
+                    <MenuItem onClick={handleSignOut}>Sign out</MenuItem>
                 </MenuList>
             </Menu>
         </Flex>
