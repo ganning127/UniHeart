@@ -10,7 +10,7 @@ Each year, 659,000 people in the United States alone die from heart disease, whi
 
 ### Environmental Model
 - Everyday user friendly (questions that aren't as technical)
-- 60% accuracy
+- 61% accuracy
 
 ### Lab Model
 - Designed for doctors and requires filling out questions that may only be able to be answered through medical tests
