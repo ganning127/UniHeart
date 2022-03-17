@@ -5,14 +5,15 @@ import {
     Stack,
     StackDivider,
     useDisclosure,
+    Button,
 } from '@chakra-ui/react'
 import * as React from 'react'
 import { HiOutlineMenu, HiX } from 'react-icons/hi'
 import { NavLink } from './NavLink'
 import { NavList } from './NavList'
 import { NavListItem } from './NavListItem'
-import { motion } from "framer-motion"
-
+import { useEffect, useState } from 'react'
+import { User } from '../User'
 const links = [
     {
         label: 'Predict',
@@ -67,7 +68,12 @@ const MobileNavContent = (props) => {
 }
 
 const DesktopNavContent = (props) => {
-    console.log(props.active)
+    const [loggedIn, setLoggedIn] = useState(false)
+    useEffect(() => {
+        if (localStorage.getItem('uniheart_login_state')) {
+            setLoggedIn(true)
+        }
+    }, [])
     return (
         <HStack spacing="8" align="stretch" {...props}>
             {links.map((link, index) => (
@@ -83,7 +89,18 @@ const DesktopNavContent = (props) => {
                 </NavLink.Desktop>
                 // </motion.a>
             ))}
-        </HStack>
+
+            {
+                loggedIn ?
+                    <User />
+                    :
+                    <Button bg='red.400' _hover={{ bg: 'red.500' }} color='white' as='a' href='/login'>
+                        Login
+                    </Button>
+            }
+
+
+        </HStack >
     )
 }
 

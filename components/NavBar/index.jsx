@@ -50,6 +50,7 @@ export const NavBar = ({ bg, active }) => (
                             md: 'none',
                         }}
                     />
+
                 </Flex>
             </Box>
         </Box>

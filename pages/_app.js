@@ -2,6 +2,7 @@ import * as React from 'react'
 import { ChakraProvider, useColorMode } from '@chakra-ui/react'
 import { extendTheme } from "@chakra-ui/react"
 import { Global, css } from '@emotion/react'
+import { useEffect } from 'react'
 
 // 2. Call `extendTheme` and pass your custom values
 const theme = extendTheme({
@@ -34,6 +35,18 @@ const theme = extendTheme({
   },
 })
 
+function ForceLightMode({ children }) {
+  // force light mode b/c of ChakraUI bug
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  useEffect(() => {
+    if (colorMode === "light") return;
+    toggleColorMode();
+  }, [toggleColorMode, colorMode]);
+
+  return children;
+}
+
 const GlobalStyle = ({ children }) => {
   const { colorMode } = useColorMode()
 
@@ -62,7 +75,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <GlobalStyle>
-        <Component {...pageProps} />
+        <ForceLightMode>
+          <Component {...pageProps} />
+        </ForceLightMode>
       </GlobalStyle>
     </ChakraProvider>
   )
