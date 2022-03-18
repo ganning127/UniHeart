@@ -41,9 +41,9 @@ export const TableComponent = ({ data }) => {
                     {dataArr.map((d, index) => {
                         if (d.type !== 'lab') return;
                         return (
-                            <Tr key={d.index}>
+                            <Tr key={d.index} bg={d.prediction === 'At risk' ? 'red.100' : 'transparent'}>
                                 <Td>{d.date}</Td>
-                                <Td>{d.prediction}</Td>
+                                <Td >{d.prediction}</Td>
                                 <Td>{d.enteredData.Age}</Td>
                                 <Td>{d.enteredData.Sex}</Td>
                                 <Td>{d.enteredData.ChestPainType}</Td>
@@ -54,6 +54,7 @@ export const TableComponent = ({ data }) => {
                                 <Td>{d.enteredData.MaxHR}</Td>
                                 <Td>{d.enteredData.ExerciseAngina}</Td>
                                 <Td>{d.enteredData["ST Slope"]}</Td>
+                                <Td>{d.enteredData.Oldpeak}</Td>
 
                             </Tr>
                         )
