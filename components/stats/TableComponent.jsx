@@ -19,14 +19,13 @@ import { BsDownload } from 'react-icons/bs'
 
 export const TableComponent = ({ data }) => {
     let dataArr = Array.from(data);
-    let tableKeys = Object.keys(dataArr[0]);
     const handleLabExport = async () => {
         console.log('exporting...')
         jsonexport(dataArr, function (err, csv) {
             if (err) return console.error(err);
             const csvFile = new Blob([csv], { type: 'text/csv' });
             let downloadLink = document.createElement("a");
-            downloadLink.download = 'lab.csv';
+            downloadLink.download = 'John_Doe_Lab.csv';
             downloadLink.href = window.URL.createObjectURL(csvFile);
             downloadLink.style.display = "none";
 
@@ -62,9 +61,22 @@ export const TableComponent = ({ data }) => {
                 <TableCaption>History of Heart Disease Predictions</TableCaption>
                 <Thead>
                     <Tr>
-                        {tableKeys.map((key, index) => (
+                        {/* {tableKeys.map((key, index) => (
                             <Th key={index}>{key}</Th>
-                        ))}
+                        ))} */}
+                        <Th>Date</Th>
+                        <Th>Prediction</Th>
+                        <Th isNumeric>Age</Th>
+                        <Th>Sex</Th>
+                        <Th>Chest Pain Type</Th>
+                        <Th>Resting Blood Pressure</Th>
+                        <Th>Cholesterol</Th>
+                        <Th>Fasting Blood Sugar</Th>
+                        <Th>Resting ECG</Th>
+                        <Th>Max Heart Rate</Th>
+                        <Th>Exercise Induced Angina</Th>
+                        <Th>ST Depression</Th>
+                        <Th>Oldpeak</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
