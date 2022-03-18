@@ -67,6 +67,8 @@ export const EnviroForm = () => {
         setStatusEnv(bgEnv);
         setResEnv(res_strEnv);
         setIsSubmittedEnv(true);
+
+
     }
 
     return (

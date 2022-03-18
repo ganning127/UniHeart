@@ -53,7 +53,7 @@ export const TableComponent = ({ data }) => {
                                 <Td>{d.enteredData.RestingECG}</Td>
                                 <Td>{d.enteredData.MaxHR}</Td>
                                 <Td>{d.enteredData.ExerciseAngina}</Td>
-                                <Td>{d.enteredData["ST Slope"]}</Td>
+                                <Td>{d.enteredData["ST_Slope"]}</Td>
                                 <Td>{d.enteredData.Oldpeak}</Td>
 
                             </Tr>

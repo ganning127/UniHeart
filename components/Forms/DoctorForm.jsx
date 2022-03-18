@@ -70,10 +70,25 @@ export const DoctorForm = () => {
         console.log(res);
         const res_str = res === "1" ? "At risk" : "Not at risk";
         const bg = res === "1" ? "error" : "success";
-        console.log(bg);
         setStatus(bg);
         setRes(res_str);
         setIsSubmitted(true);
+
+        let stats = localStorage.getItem('uniheart_stats');
+
+        stats = JSON.parse(stats);
+        console.log(stats);
+        console.log(typeof stats)
+        let newObj = {
+            "name": "John Doe",
+            "date": new Date().toLocaleDateString(),
+            "type": "lab",
+            "enteredData": data,
+            "prediction": res_str
+        }
+
+        stats.push(newObj);
+        localStorage.setItem('uniheart_stats', JSON.stringify(stats));
     }
 
     return (
