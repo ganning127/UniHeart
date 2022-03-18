@@ -57,9 +57,14 @@ export default function Login() {
 
 
     useEffect(() => {
-        if (localStorage.getItem('uniheart_login_state')) {
+        if (localStorage.getItem('uniheart_login_state') === 'true') {
             window.location = '/predict';
         }
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const message = urlParams.get('msg');
+        setError(true);
+        setErrorMsg(message)
     }, [])
 
 
@@ -80,7 +85,6 @@ export default function Login() {
                 })
             })
             const data = await response.json();
-            console.log(data)
 
             if (data.success) {
                 window.location = '/predict'
@@ -90,6 +94,7 @@ export default function Login() {
             else {
                 localStorage.setItem('uniheart_login_state', false);
                 setError(true);
+                setErrorMsg('Wrong email or password!');
             }
 
             document.getElementById('spinner').style.display = 'none';
