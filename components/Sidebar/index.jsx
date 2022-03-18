@@ -29,15 +29,15 @@ import {
     FiChevronDown,
 } from 'react-icons/fi';
 import { MdLightbulbOutline, MdOutlineHealthAndSafety } from 'react-icons/md'
-import { AiOutlineHeart, AiOutlineCheckCircle } from 'react-icons/ai'
+import { AiOutlineHeart, AiOutlineCheckCircle, AiOutlineDotChart } from 'react-icons/ai'
 import { BsCalculator } from 'react-icons/bs'
 import { User } from '../User'
 const LinkItems = [
     { name: 'Home', icon: FiHome, href: '/' },
     { name: 'Predict', icon: AiOutlineHeart, href: '/predict' },
+    { name: 'Statistics', icon: AiOutlineDotChart, href: '/statistics' },
     { name: 'Prevention', icon: MdOutlineHealthAndSafety, href: '/prevention' },
-
-    { name: 'BMI Calculator', icon: BsCalculator, href: '/bmi' }
+    { name: 'BMI Calculator', icon: BsCalculator, href: '/bmi' },
 ];
 
 export const Sidebar = ({ active, children }) => {

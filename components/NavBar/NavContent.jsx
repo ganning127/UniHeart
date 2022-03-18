@@ -16,18 +16,18 @@ import { NavListItem } from './NavListItem'
 import { useEffect, useState } from 'react'
 import { User } from '../User'
 const links = [
-    {
-        label: 'Predict',
-        href: '/predict',
-    },
-    {
-        label: 'Prevention',
-        href: '/prevention',
-    },
-    {
-        label: 'BMI Calculator',
-        href: '/bmi',
-    }
+    // {
+    //     label: 'Predict',
+    //     href: '/predict',
+    // },
+    // {
+    //     label: 'Prevention',
+    //     href: '/prevention',
+    // },
+    // {
+    //     label: 'BMI Calculator',
+    //     href: '/bmi',
+    // }
 ]
 
 const MobileNavContent = (props) => {

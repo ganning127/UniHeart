@@ -1,14 +1,16 @@
 import Head from 'next/head'
-import { NavBar } from '@components/NavBar'
-import { HomeLanding } from '@components/Landing/HomeLanding'
 import { Sidebar } from '@components/Sidebar'
-import { Container, Text } from '@chakra-ui/react'
-import { HeadingWithDesc } from '@components/Headings/HeadingWithDesc'
-import { TextSep } from '@components/Separators/TextSep'
+import { Container } from '@chakra-ui/react'
 import { Bmi } from '@components/Forms/Bmi'
+import { useEffect } from 'react'
 
 
 export default function BmiCalc() {
+    useEffect(() => {
+        if (localStorage.getItem('uniheart_login_state') === 'false') {
+            window.location.href = '/login?msg=Please login to use this feature!'
+        }
+    }, []);
     return (
         <>
             <Head>

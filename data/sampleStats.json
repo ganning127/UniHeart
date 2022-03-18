@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Lab 1",
+        "date": "2020-04-01",
+        "type": "lab",
+        "enteredData": {
+            "Age": 34,
+            "Sex": "M",
+            "ChestPainType": "TA",
+            "RestingBP": 123,
+            "Cholesterol": 14,
+            "FastingBS": 135,
+            "RestingECG": "ST",
+            "MaxHR": 134,
+            "ExerciseAngina": "Y",
+            "Oldpeak": 12,
+            "ST Slope": "Flat"
+        }
+    },
+    {
+        "name": "Lab 1",
+        "date": "2020-04-01",
+        "type": "lab",
+        "enteredData": {
+            "Age": 34,
+            "Sex": "M",
+            "ChestPainType": "TA",
+            "RestingBP": 123,
+            "Cholesterol": 14,
+            "FastingBS": 135,
+            "RestingECG": "ST",
+            "MaxHR": 134,
+            "ExerciseAngina": "Y",
+            "Oldpeak": 12,
+            "ST Slope": "Flat"
+        }
+    },
+    {
+        "name": "Lab 1",
+        "date": "2020-04-01",
+        "type": "lab",
+        "enteredData": {
+            "Age": 34,
+            "Sex": "M",
+            "ChestPainType": "TA",
+            "RestingBP": 123,
+            "Cholesterol": 14,
+            "FastingBS": 135,
+            "RestingECG": "ST",
+            "MaxHR": 134,
+            "ExerciseAngina": "Y",
+            "Oldpeak": 12,
+            "ST Slope": "Flat"
+        }
+    }
+]
