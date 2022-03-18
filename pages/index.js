@@ -7,9 +7,20 @@ import { TextSep } from '@components/Separators/TextSep'
 import { HeadingWithDesc } from '@components/Headings/HeadingWithDesc'
 import { FaLeaf } from 'react-icons/fa'
 import { BiTestTube } from 'react-icons/bi'
-
+import SampleData from '../data/sampleStats.json'
+import { useEffect } from 'react'
 
 export default function Home() {
+
+
+
+  useEffect(() => {
+    if (localStorage.getItem('uniheart_stats') == null) {
+      // set sample data
+      localStorage.setItem('uniheart_stats', JSON.stringify(SampleData))
+    }
+  }, []);
+
   return (
     <>
       <Head>

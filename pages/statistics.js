@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { Sidebar } from '@components/Sidebar'
 import { Model } from '@components/Forms/Model.jsx'
 import { useEffect } from 'react'
-import SampleData from '../data/sampleStats.json'
 import { TableComponent } from '@components/stats/TableComponent'
 import { useState } from 'react'
 
@@ -16,14 +15,8 @@ export default function Statistics() {
             window.location.href = '/login?msg=Please login to predict for heart disease!'
         }
 
-        if (localStorage.getItem('uniheart_stats') == null) {
-            console.log("here")
-            localStorage.setItem('uniheart_stats', JSON.stringify(SampleData))
-            setTableData(SampleData);
-        }
-        else {
-            setTableData(JSON.parse(localStorage.getItem('uniheart_stats')));
-        }
+        const tableData = localStorage.getItem('uniheart_stats')
+        setTableData(JSON.parse(tableData))
     }, []);
 
     return (
