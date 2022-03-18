@@ -1,6 +1,6 @@
 [
     {
-        "name": "Lab 1",
+        "name": "Ganning Xu",
         "date": "2020-04-01",
         "type": "lab",
         "enteredData": {
@@ -15,10 +15,11 @@
             "ExerciseAngina": "Y",
             "Oldpeak": 12,
             "ST Slope": "Flat"
-        }
+        },
+        "prediction": "At risk"
     },
     {
-        "name": "Lab 1",
+        "name": "Ganning Xu",
         "date": "2020-04-01",
         "type": "lab",
         "enteredData": {
@@ -33,10 +34,11 @@
             "ExerciseAngina": "Y",
             "Oldpeak": 12,
             "ST Slope": "Flat"
-        }
+        },
+        "prediction": "Not at risk"
     },
     {
-        "name": "Lab 1",
+        "name": "Ganning Xu",
         "date": "2020-04-01",
         "type": "lab",
         "enteredData": {
@@ -51,6 +53,7 @@
             "ExerciseAngina": "Y",
             "Oldpeak": 12,
             "ST Slope": "Flat"
-        }
+        },
+        "prediction": "At risk"
     }
 ]
