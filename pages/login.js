@@ -63,8 +63,11 @@ export default function Login() {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const message = urlParams.get('msg');
-        setError(true);
-        setErrorMsg(message)
+
+        if (message) {
+            setError(true);
+            setErrorMsg(message)
+        }
     }, [])
 
 
