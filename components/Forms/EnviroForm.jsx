@@ -64,6 +64,32 @@ export const EnviroForm = () => {
 
         const res_strEnv = resEnv === "1" ? "At risk" : "Not at risk";
         const bgEnv = resEnv === "1" ? "error" : "success";
+
+        let stats = localStorage.getItem('env_uniheart_stats');
+
+        let obj = {
+            "age": ageEnv,
+            "gender": genderEnv,
+            "height": heightEnv,
+            "weight": weightEnv,
+            "smoke": smokeEnv,
+            "alco": alcoEnv,
+            "active": activeEnv
+        }
+        stats = JSON.parse(stats);
+        console.log(stats);
+        console.log(typeof stats)
+        let newObj = {
+            "name": "John Doe",
+            "date": new Date().toLocaleDateString(),
+            "type": "env",
+            "enteredData": obj,
+            "prediction": res_strEnv
+        }
+
+        stats.push(newObj);
+        localStorage.setItem('env_uniheart_stats', JSON.stringify(stats));
+
         setStatusEnv(bgEnv);
         setResEnv(res_strEnv);
         setIsSubmittedEnv(true);

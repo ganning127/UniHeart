@@ -9,15 +9,18 @@ import { FaLeaf } from 'react-icons/fa'
 import { BiTestTube } from 'react-icons/bi'
 import SampleData from '../data/sampleStats.json'
 import { useEffect } from 'react'
+import EnvSampleData from '../data/envSampleStats.json'
 
 export default function Home() {
-
-
-
   useEffect(() => {
     if (localStorage.getItem('uniheart_stats') == null) {
       // set sample data
       localStorage.setItem('uniheart_stats', JSON.stringify(SampleData))
+    }
+
+    if (localStorage.getItem('env_uniheart_stats') == null) {
+      // set sample data
+      localStorage.setItem('env_uniheart_stats', JSON.stringify(EnvSampleData))
     }
   }, []);
 

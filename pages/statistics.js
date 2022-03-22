@@ -3,20 +3,31 @@ import { Sidebar } from '@components/Sidebar'
 import { Model } from '@components/Forms/Model.jsx'
 import { useEffect } from 'react'
 import { TableComponent } from '@components/stats/TableComponent'
+import { EnvTableComponent } from '@components/stats/EnvTableComponent'
 import { useState } from 'react'
+import { Charts } from '@components/stats/Charts'
 
 export default function Statistics() {
     const [tableData, setTableData] = useState('');
-
+    const [envTableData, setEnvTableData] = useState('');
+    const [totalData, setTotalData] = useState('');
     useEffect(() => {
-        console.log('hello', localStorage.getItem('uniheart_stats'))
 
         if (localStorage.getItem('uniheart_login_state') === 'false' || localStorage.getItem('uniheart_login_state') === null) {
             window.location.href = '/login?msg=Please login to predict for heart disease!'
         }
 
-        const tableData = localStorage.getItem('uniheart_stats')
-        setTableData(JSON.parse(tableData))
+
+
+        const tableData = JSON.parse(localStorage.getItem('uniheart_stats'));
+        let other = tableData;
+        const envTableData = JSON.parse(localStorage.getItem('env_uniheart_stats'));
+        console.log(tableData)
+
+        other.push(...envTableData);
+        setTableData(tableData)
+        setEnvTableData(envTableData)
+        setTotalData(other)
     }, []);
 
     return (
@@ -26,6 +37,8 @@ export default function Statistics() {
             </Head>
             <Sidebar active='statistics'>
                 <TableComponent data={tableData} />
+                <EnvTableComponent data={envTableData} />
+                <Charts data={totalData} />
 
             </Sidebar>
         </>
