@@ -7,10 +7,10 @@ import { TextSep } from '@components/Separators/TextSep'
 import { HeadingWithDesc } from '@components/Headings/HeadingWithDesc'
 import { FaLeaf } from 'react-icons/fa'
 import { BiTestTube } from 'react-icons/bi'
-import SampleData from '../data/sampleStats.json'
 import { useEffect } from 'react'
 import EnvSampleData from '../data/envSampleStats.json'
-
+import SampleData from '../data/sampleStats.json'
+import actStats from '../data/actStats.json'
 export default function Home() {
   useEffect(() => {
     if (localStorage.getItem('uniheart_stats') == null) {
@@ -21,6 +21,11 @@ export default function Home() {
     if (localStorage.getItem('env_uniheart_stats') == null) {
       // set sample data
       localStorage.setItem('env_uniheart_stats', JSON.stringify(EnvSampleData))
+    }
+
+    if (localStorage.getItem('uniheart_act_stats') == null) {
+      // set sample data
+      localStorage.setItem('uniheart_act_stats', JSON.stringify(actStats))
     }
   }, []);
 

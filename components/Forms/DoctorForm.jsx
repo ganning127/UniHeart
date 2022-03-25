@@ -25,7 +25,7 @@ import {
     NumberDecrementStepper, Radio, RadioGroup
 } from '@chakra-ui/react'
 
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import { modelPredict, transformLabData } from 'lib/HeartModel';
 import { useState } from 'react';
 
@@ -67,7 +67,6 @@ export const DoctorForm = () => {
         }
 
         const res = modelPredict("model_lab", transformLabData(data));
-        console.log(res);
         const res_str = res === "1" ? "At risk" : "Not at risk";
         const bg = res === "1" ? "error" : "success";
         setStatus(bg);
@@ -77,8 +76,6 @@ export const DoctorForm = () => {
         let stats = localStorage.getItem('uniheart_stats');
 
         stats = JSON.parse(stats);
-        console.log(stats);
-        console.log(typeof stats)
         let newObj = {
             "name": "John Doe",
             "date": new Date().toLocaleDateString(),

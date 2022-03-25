@@ -77,8 +77,7 @@ export const EnviroForm = () => {
                 "active": activeEnv
             }
             stats = JSON.parse(stats);
-            console.log(stats);
-            console.log(typeof stats)
+
             let newObj = {
                 "name": "John Doe",
                 "date": new Date().toLocaleDateString(),

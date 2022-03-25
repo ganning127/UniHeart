@@ -5,11 +5,10 @@ import { useEffect } from 'react'
 import { TableComponent } from '@components/stats/TableComponent'
 import { EnvTableComponent } from '@components/stats/EnvTableComponent'
 import { useState } from 'react'
-import { Charts } from '@components/stats/Charts'
-
-export default function Statistics() {
-    const [tableData, setTableData] = useState('');
-    const [envTableData, setEnvTableData] = useState('');
+import { ActivityCharts } from '@components/stats/ActivityCharts'
+import { ActivityTable } from '@components/stats/ActivityTable'
+import { ActivityInfo } from '@components/stats/ActivityInfo'
+export default function ActivityLog() {
     const [totalData, setTotalData] = useState('');
     useEffect(() => {
 
@@ -19,26 +18,24 @@ export default function Statistics() {
 
 
 
-        const tableData = JSON.parse(localStorage.getItem('uniheart_stats'));
-        let other = tableData;
-        const envTableData = JSON.parse(localStorage.getItem('env_uniheart_stats'));
-
-        other.push(...envTableData);
-        setTableData(tableData)
-        setEnvTableData(envTableData)
-        setTotalData(other)
+        const tableData = JSON.parse(localStorage.getItem('uniheart_act_stats'));
+        console.log(tableData);
+        setTotalData(tableData)
     }, []);
 
     return (
         <>
             <Head>
-                <title>Statistics - UniHeart</title>
+                <title>Activity Log - UniHeart</title>
             </Head>
-            <Sidebar active='prediction history'>
-                <Charts data={totalData} />
-                <TableComponent data={tableData} />
-                <EnvTableComponent data={envTableData} />
+            <Sidebar active='activity log'>
 
+
+                <ActivityInfo data={totalData} />
+
+                <ActivityCharts data={totalData} />
+
+                <ActivityTable data={totalData} />
 
             </Sidebar>
         </>

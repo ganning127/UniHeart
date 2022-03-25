@@ -74,7 +74,6 @@ export default function Login() {
     const handleLogin = async (event) => {
         event.preventDefault();
         document.getElementById('spinner').style.display = 'block';
-        console.log(email);
 
         setTimeout(async () => {
             const response = await fetch('/api/login', {

@@ -14,10 +14,10 @@ import {
     Heading
 } from '@chakra-ui/react';
 import * as jsonexport from "jsonexport/dist"
-import React, { useState, useEffect } from 'react';
-import { BsDownload } from 'react-icons/bs'
 
-export const EnvTableComponent = ({ data }) => {
+
+export const ActivityTable = ({ data }) => {
+
     let dataArr = Array.from(data);
     const handleLabExport = async () => {
         console.log('exporting...')
@@ -25,7 +25,7 @@ export const EnvTableComponent = ({ data }) => {
             if (err) return console.error(err);
             const csvFile = new Blob([csv], { type: 'text/csv' });
             let downloadLink = document.createElement("a");
-            downloadLink.download = 'John_Doe_Env.csv';
+            downloadLink.download = 'John_Doe_Activity.csv';
             downloadLink.href = window.URL.createObjectURL(csvFile);
             downloadLink.style.display = "none";
 
@@ -34,13 +34,10 @@ export const EnvTableComponent = ({ data }) => {
         });
     }
 
-
-
     return (
         <>
-            <Box d='flex' alignItems='center' my={4}>
+            <Box d='flex' alignItems='center' mb={4}>
                 <Heading d='inline'></Heading>
-
                 <Heading
                     lineHeight={1.1}
                     fontWeight="black"
@@ -49,50 +46,51 @@ export const EnvTableComponent = ({ data }) => {
                         as={'span'}
                         color={'red.400'}
                         position={'relative'}>
-                        Environmental
+                        Activity <Text as={'span'} color='gray.800'>
+                            Tracker
+                        </Text>
                     </Text>
-                    <Text as={'span'} ml='4' >
-                        Predictions
-                    </Text>
+
                 </Heading>
                 <Button onClick={handleLabExport} ml='4'>Export as CSV</Button>
             </Box>
             <Table variant='simple'>
-                <TableCaption>History of Environmental Model Heart Disease Predictions</TableCaption>
+                <TableCaption>Activity History (as of {new Date().toLocaleDateString()})</TableCaption>
                 <Thead>
                     <Tr>
                         {/* {tableKeys.map((key, index) => (
                             <Th key={index}>{key}</Th>
                         ))} */}
-                        <Th>Date</Th>
-                        <Th>Prediction</Th>
-                        <Th>Age</Th>
-                        <Th>Sex</Th>
-                        <Th>Height</Th>
-                        <Th>Weight</Th>
-                        <Th>Do you smoke? (y/n)</Th>
-                        <Th>Do you drink? (y/n)</Th>
-                        <Th>Are you active? (y/n)</Th>
+                        <Th>Activity Date</Th>
+                        <Th>Type</Th>
+                        <Th>Length</Th>
+                        <Th>Intensity (out of 10)</Th>
+                        <Th>Rating (out of 5)</Th>
+                        <Th>Heart Rate (bpm)</Th>
+                        <Th>Notes</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
                     {dataArr.map((d, index) => {
-                        if (d.type !== 'env') return;
                         return (
-                            <Tr key={d.index} bg={d.prediction === 'At risk' ? 'red.100' : 'transparent'}>
-                                <Td>{d.date}</Td>
-                                <Td >{d.prediction}</Td>
-                                <Td>{d.enteredData.age}</Td>
-                                <Td>{d.enteredData.gender}</Td>
-                                <Td>{d.enteredData.height}</Td>
-                                <Td>{d.enteredData.weight}</Td>
-                                <Td>{d.enteredData.smoke}</Td>
-                                <Td>{d.enteredData.alco}</Td>
-                                <Td>{d.enteredData.active}</Td>
+                            <Tr key={d.index}>
+                                <Td>{d.actDate}</Td>
+                                <Td >{d.type}</Td>
+                                <Td>{d.length}</Td>
+                                <Td>{d.intensity}</Td>
+
+                                <Td>{d.rating}</Td>
+                                <Td>{d.hr}</Td>
+                                <Td>{d.notes}</Td>
+
                             </Tr>
                         )
                     })}
                 </Tbody>
+
+
+
+
             </Table>
         </>
     )
