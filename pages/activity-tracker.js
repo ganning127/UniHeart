@@ -6,7 +6,7 @@ import {
     Container, Text, Button,
     FormControl,
     FormHelperText,
-    Input,
+    Box,
     Alert,
     AlertIcon,
     AlertTitle,
@@ -24,15 +24,20 @@ import {
     NumberInputStepper,
     NumberIncrementStepper,
     Select,
+    HStack,
     NumberDecrementStepper, Radio, RadioGroup
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import DatePicker from "react-date-picker/dist/entry.nostyle";
 import "react-date-picker/dist/DatePicker.css";
 import "react-calendar/dist/Calendar.css";
+import { Rating } from 'react-simple-star-rating'
+
 
 export default function ActivityTracker() {
     const [date, setDate] = useState(new Date());
+    const [rating, setRating] = useState(0) // initial rating value
+
 
     useEffect(() => {
         if (localStorage.getItem('uniheart_login_state') === 'false' || localStorage.getItem('uniheart_login_state') === null) {
@@ -89,22 +94,33 @@ export default function ActivityTracker() {
         "other"
     ]
 
+    const handleRating = (rate) => {
+        setRating(rate)
+
+        console.log(rate);
+    }
+
     const handleSubmit = () => {
         console.log('submitting activity tracker...');
 
-        let length = document.getElementById('length').value;
-        let intensity = document.getElementById('intensity').value;
+        let length = parseInt(document.getElementById('length').value);
+        let intensity = parseInt(document.getElementById('intensity').value);
         let type = document.getElementById('type').value;
-        let hr = document.getElementById('hr').value;
+        let hr = parseInt(document.getElementById('hr').value);
         let notes = document.getElementById('notes').value;
 
         let actDate = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
 
         const obj = {
-            actDate, length, intensity, type, hr, notes
+            actDate, length, intensity, type, hr, notes, rating
         }
 
-        console.log(obj)
+
+        const existingStats = JSON.parse(localStorage.getItem('uniheart_act_stats')) || [];
+        existingStats.push(obj);
+
+        console.log(existingStats)
+        localStorage.setItem('uniheart_act_stats', JSON.stringify(existingStats));
 
     }
     return (
@@ -147,6 +163,13 @@ export default function ActivityTracker() {
                                     </NumberInput>
                                 </FormControl>
 
+                                <FormControl isRequired borderRadius="20" color="gray.900">
+                                    <FormLabel>Activity Rating</FormLabel>
+                                    <FormHelperText mb='2'>
+                                        Rate your workout from 1 to 5
+                                    </FormHelperText>
+                                    <Rating onClick={handleRating} ratingValue={rating} />
+                                </FormControl>
 
                                 <FormControl isRequired borderRadius="20" color="gray.900">
                                     <FormLabel>Heart Rate During Activity</FormLabel>
