@@ -1,7 +1,7 @@
 import {
     FormControl,
     Text,
-    SimpleGrid,
+    FormHelperText,
     Input,
     Alert,
     AlertIcon,
@@ -10,7 +10,7 @@ import {
     Container,
     VStack,
     Button,
-    Box,
+    Link,
     StackDivider,
     Stack, Textarea,
     Tooltip,
@@ -113,7 +113,10 @@ export const DoctorForm = () => {
                         align='stretch'
                     >
                         <FormControl isRequired borderRadius="20" color="gray.900">
-                            <FormLabel>Age (years)</FormLabel>
+                            <FormLabel>Age</FormLabel>
+                            <FormHelperText mb='2'>
+                                Your age in years
+                            </FormHelperText>
                             <NumberInput step={5} defaultValue={15} min={2} max={120} id='age'>
                                 <NumberInputField />
                                 <NumberInputStepper>
@@ -125,6 +128,9 @@ export const DoctorForm = () => {
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
                             <FormLabel>Sex</FormLabel>
+                            <FormHelperText mb='2'>
+                                Your biological sex (M/F)
+                            </FormHelperText>
                             <Select id='sex'>
                                 <option value='M'>Male</option>
                                 <option value='F'>Female</option>
@@ -133,6 +139,9 @@ export const DoctorForm = () => {
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
                             <FormLabel>Chest Pain Type</FormLabel>
+                            <FormHelperText mb='2'>
+                                For more information on types of chest pain, head to the <Link href='https://www.heart.org/en/health-topics/heart-attack/angina-chest-pain' color='blue.300' isExternal>American Heart Association</Link>
+                            </FormHelperText>
                             <RadioGroup onChange={e => setChestType(e)} value={chestType}>
                                 <Stack spacing={5} direction='row'>
                                     <Radio colorScheme='red' value='TA'>
@@ -153,7 +162,10 @@ export const DoctorForm = () => {
                         </FormControl>
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
-                            <FormLabel>Resting Blood Pressure (mmHg)</FormLabel>
+                            <FormLabel>Resting Blood Pressure</FormLabel>
+                            <FormHelperText mb='2'>
+                                Your resting blood pressure in millimeters of mercury (mmHg)
+                            </FormHelperText>
                             <NumberInput id='restingBP' defaultValue={80}>
                                 <NumberInputField />
                                 <NumberInputStepper >
@@ -166,6 +178,9 @@ export const DoctorForm = () => {
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
                             <FormLabel>Cholesterol (mm/dl)</FormLabel>
+                            <FormHelperText mb='2'>
+                                Your Cholesterol level in millimoles per deciliter (mm/dl)
+                            </FormHelperText>
                             <NumberInput id='cholesterol' defaultValue={100}>
                                 <NumberInputField />
                                 <NumberInputStepper >
@@ -176,7 +191,10 @@ export const DoctorForm = () => {
                         </FormControl>
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
-                            <FormLabel>Fasting Blood Sugar (yes if above 120 mg/dl)</FormLabel>
+                            <FormLabel>High Fasting Blood Sugar </FormLabel>
+                            <FormHelperText mb='2'>
+                                Is the fasting blood sugar above 120 mg/dl?
+                            </FormHelperText>
                             <Select id='fastingBS'>
                                 <option value='1'>Yes</option>
                                 <option value='0'>No</option>
@@ -184,7 +202,10 @@ export const DoctorForm = () => {
                         </FormControl>
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
-                            <FormLabel>Resting ECG (mg/dl)</FormLabel>
+                            <FormLabel>Resting ECG</FormLabel>
+                            <FormHelperText mb='2'>
+                                Your resting ECG in milligrams per deciliter (mg/dl)
+                            </FormHelperText>
                             <RadioGroup defaultValue='2' id='restingECG' onChange={e => setRestingECG(e)} value={restingECG}>
                                 <Stack spacing={5} direction='row'>
                                     <Radio colorScheme='red' value='Normal'>
@@ -205,7 +226,10 @@ export const DoctorForm = () => {
                         </FormControl>
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
-                            <FormLabel>Max Heart Rate(BPM, between 60-202)</FormLabel>
+                            <FormLabel>Max Heart Rate</FormLabel>
+                            <FormHelperText mb='2'>
+                                Your maximum heart rate in beats per minute (BPM)
+                            </FormHelperText>
                             <NumberInput id='maxHR' defaultValue={100}>
                                 <NumberInputField />
                                 <NumberInputStepper>
@@ -216,7 +240,10 @@ export const DoctorForm = () => {
                         </FormControl>
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
-                            <FormLabel>Exercise Angina (exercise-induced angina)</FormLabel>
+                            <FormLabel>Exercise Induced Angina</FormLabel>
+                            <FormHelperText mb='2'>
+                                Is exercise-induced angina present?
+                            </FormHelperText>
                             <RadioGroup id='exerciseAngina' onChange={e => setExerciseAngina(e)} value={exerciseAngina}>
                                 <Stack spacing={5} direction='row'>
                                     <Radio colorScheme='red' value='Y'>
@@ -230,7 +257,11 @@ export const DoctorForm = () => {
                         </FormControl>
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
-                            <FormLabel>Oldpeak (Integer value measured in depression)</FormLabel>
+                            <FormLabel>Oldpeak</FormLabel>
+
+                            <FormHelperText mb='2'>
+                                Your oldpeak in units of depression (integer value)
+                            </FormHelperText>
                             <NumberInput id='oldpeak' defaultValue={1}>
                                 <NumberInputField />
                                 <NumberInputStepper>
@@ -243,7 +274,10 @@ export const DoctorForm = () => {
 
 
                         <FormControl isRequired borderRadius="20" color="gray.900">
-                            <FormLabel>ST Slope (the slope of the peak exercise ST segment)</FormLabel>
+                            <FormLabel>Shape of ST Slope</FormLabel>
+                            <FormHelperText mb='2'>
+                                Your ST slope (the slope of the peak exercise ST segment)
+                            </FormHelperText>
                             <RadioGroup defaultValue='2' id='sl_slope' onChange={e => setSlope(e)} value={slope}>
                                 <Stack spacing={5} direction='row'>
                                     <Radio colorScheme='red' value='Up'>
