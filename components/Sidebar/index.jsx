@@ -31,6 +31,7 @@ import {
 import { MdLightbulbOutline, MdOutlineHealthAndSafety } from 'react-icons/md'
 import { AiOutlineHeart, AiOutlineCheckCircle, AiOutlineDotChart } from 'react-icons/ai'
 import { BsCalculator } from 'react-icons/bs'
+import { BiWalk } from 'react-icons/bi'
 import { User } from '../User'
 const LinkItems = [
     { name: 'Home', icon: FiHome, href: '/' },
@@ -38,6 +39,7 @@ const LinkItems = [
     { name: 'Statistics', icon: AiOutlineDotChart, href: '/statistics' },
     { name: 'Prevention', icon: MdOutlineHealthAndSafety, href: '/prevention' },
     { name: 'BMI Calculator', icon: BsCalculator, href: '/bmi' },
+    { name: 'Activity Tracker', icon: BiWalk, href: '/activity-tracker' },
 ];
 
 export const Sidebar = ({ active, children }) => {

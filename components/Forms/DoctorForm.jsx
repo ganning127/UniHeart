@@ -25,7 +25,7 @@ import {
     NumberDecrementStepper, Radio, RadioGroup
 } from '@chakra-ui/react'
 
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import { modelPredict, transformLabData } from 'lib/HeartModel';
 import { useState } from 'react';
 
