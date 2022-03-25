@@ -37,8 +37,7 @@ import { Rating } from 'react-simple-star-rating'
 export default function ActivityTracker() {
     const [date, setDate] = useState(new Date());
     const [rating, setRating] = useState(0) // initial rating value
-
-
+    const [submitted, setSubmitted] = useState(false)
     useEffect(() => {
         if (localStorage.getItem('uniheart_login_state') === 'false' || localStorage.getItem('uniheart_login_state') === null) {
             window.location.href = '/login?msg=Please login to use this feature!'
@@ -96,8 +95,6 @@ export default function ActivityTracker() {
 
     const handleRating = (rate) => {
         setRating(rate)
-
-        console.log(rate);
     }
 
     const handleSubmit = () => {
@@ -119,9 +116,9 @@ export default function ActivityTracker() {
         const existingStats = JSON.parse(localStorage.getItem('uniheart_act_stats')) || [];
         existingStats.push(obj);
 
-        console.log(existingStats)
         localStorage.setItem('uniheart_act_stats', JSON.stringify(existingStats));
 
+        setSubmitted(true);
     }
     return (
         <>
@@ -130,7 +127,7 @@ export default function ActivityTracker() {
             </Head>
             <Sidebar active='activity tracker'>
                 <Container maxW='container.lg' p={4}>
-                    <Formik
+                    {!submitted && <Formik
                         initialValues={{ name: 'Sasuke' }}
                     >
                         <Form>
@@ -228,7 +225,26 @@ export default function ActivityTracker() {
                             </VStack>
 
                         </Form>
-                    </Formik>
+                    </Formik>}
+
+                    {submitted && <Alert
+                        status='success'
+                        variant='subtle'
+                        flexDirection='column'
+                        alignItems='center'
+                        justifyContent='center'
+                        textAlign='center'
+                        height='200px'
+                    >
+                        <AlertIcon boxSize='40px' mr={0} />
+                        <AlertTitle mt={4} mb={1} fontSize='lg'>
+                            Activity added!
+                        </AlertTitle>
+                        <AlertDescription maxWidth='sm'>
+                            Head to <Link href='/activity-log' color='blue.400'>Activity Tracker</Link> to view your activity log!.
+                        </AlertDescription>
+                    </Alert>}
+
 
                 </Container>
 

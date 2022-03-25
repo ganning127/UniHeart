@@ -50,10 +50,11 @@ export const TableComponent = ({ data }) => {
                         color={'red.400'}
                         position={'relative'}>
                         Lab
+                        <Text as={'span'} color='gray.800' >
+                            Predictions
+                        </Text>
                     </Text>
-                    <Text as={'span'} ml='4' >
-                        Predictions
-                    </Text>
+
                 </Heading>
                 <Button onClick={handleLabExport} ml='4'>Export as CSV</Button>
             </Box>

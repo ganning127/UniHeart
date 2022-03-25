@@ -1,13 +1,10 @@
 import React, { ReactNode } from 'react';
 import {
     IconButton,
-    Avatar,
     Box,
     CloseButton,
     Flex,
     HStack,
-    VStack,
-    ScaleFade,
     Icon,
     useColorModeValue,
     Link,
@@ -28,22 +25,22 @@ import {
     FiBell,
     FiChevronDown,
 } from 'react-icons/fi';
-import { MdLightbulbOutline, MdOutlineHealthAndSafety } from 'react-icons/md'
+import { MdOutlineHealthAndSafety } from 'react-icons/md'
 import { AiOutlineHeart, AiOutlineCheckCircle, AiOutlineDotChart } from 'react-icons/ai'
-import { BsCalculator } from 'react-icons/bs'
+import { BsCalculator, BsBarChart } from 'react-icons/bs'
 import { BiWalk } from 'react-icons/bi'
 import { User } from '../User'
 const LinkItems = [
     { name: 'Home', icon: FiHome, href: '/' },
     { name: 'Predict', icon: AiOutlineHeart, href: '/predict' },
-    { name: 'Statistics', icon: AiOutlineDotChart, href: '/statistics' },
-    { name: 'Prevention', icon: MdOutlineHealthAndSafety, href: '/prevention' },
+    { name: 'Prediction History', icon: AiOutlineDotChart, href: '/statistics' },
     { name: 'BMI Calculator', icon: BsCalculator, href: '/bmi' },
     { name: 'Activity Tracker', icon: BiWalk, href: '/activity-tracker' },
+    { name: 'Activity Log', icon: BsBarChart, href: '/activity-log' },
+    { name: 'Prevention', icon: MdOutlineHealthAndSafety, href: '/prevention' },
 ];
 
 export const Sidebar = ({ active, children }) => {
-    // console.log(active)
     const { isOpen, onOpen, onClose } = useDisclosure();
     return (
         <Box minH="100vh" bg={useColorModeValue('gray.50', 'gray.900')}>
@@ -74,7 +71,6 @@ export const Sidebar = ({ active, children }) => {
 }
 
 const SidebarContent = ({ onClose, active, ...rest }) => {
-    console.log(active)
     return (
         <Box
             // transition="3s ease"
@@ -106,7 +102,6 @@ const SidebarContent = ({ onClose, active, ...rest }) => {
 };
 
 const NavItem = ({ icon, children, href, active, ...rest }) => {
-    console.log(children)
     return (
         <Link href={href} style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
             <Flex
