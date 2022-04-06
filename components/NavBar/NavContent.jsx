@@ -71,7 +71,7 @@ const MobileNavContent = (props) => {
 const DesktopNavContent = (props) => {
     const [loggedIn, setLoggedIn] = useState(false)
     useEffect(() => {
-        if (localStorage.getItem('uniheart_login_state')) {
+        if (localStorage.getItem('uniheart_login_state') === 'true') {
             setLoggedIn(true)
         }
     }, [])

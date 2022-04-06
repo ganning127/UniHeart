@@ -58,7 +58,7 @@ export const EnvTableComponent = ({ data }) => {
                 <Button onClick={handleLabExport} ml='4'>Export as CSV</Button>
             </Box>
             <Table variant='simple'>
-                <TableCaption>History of Environmental Model Heart Disease Predictions</TableCaption>
+                <TableCaption>History of Environmental Model Heart Disease Predictions (as of {new Date().toLocaleDateString()})</TableCaption>
                 <Thead>
                     <Tr>
                         {/* {tableKeys.map((key, index) => (
