@@ -38,7 +38,7 @@ export const TableComponent = ({ data }) => {
 
     return (
         <>
-            <Box d='flex' alignItems='center' mb={4}>
+            <Box d='flex' alignItems='center' mb={4} mt={16}>
                 <Heading d='inline'></Heading>
 
                 <Heading
@@ -59,7 +59,7 @@ export const TableComponent = ({ data }) => {
                 <Button onClick={handleLabExport} ml='4'>Export as CSV</Button>
             </Box>
             <Table variant='simple'>
-                <TableCaption>History of Lab Model Heart Disease Predictions</TableCaption>
+                <TableCaption>History of Lab Model Heart Disease Predictions (as of {new Date().toLocaleDateString()})</TableCaption>
                 <Thead>
                     <Tr>
                         {/* {tableKeys.map((key, index) => (
