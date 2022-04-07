@@ -49,8 +49,7 @@ export const TableComponent = ({ data }) => {
                         as={'span'}
                         color={'red.400'}
                         position={'relative'}>
-                        Lab
-                        <Text as={'span'} color='gray.800' >
+                        Lab <Text as={'span'} color='gray.800' >
                             Predictions
                         </Text>
                     </Text>

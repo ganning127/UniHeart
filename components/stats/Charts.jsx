@@ -37,8 +37,9 @@ export const Charts = ({ data }) => {
                     numberNegative,
                 ],
                 "backgroundColor": [
-                    "#90ee90",
-                    "#FF7F7F"
+                    "#FF7F7F",
+                    "#90ee90"
+
                 ]
             }
         ]
