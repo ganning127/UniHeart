@@ -123,7 +123,7 @@ export const EnviroForm = () => {
                             <FormHelperText mb='2'>
                                 Your age in years
                             </FormHelperText>
-                            <NumberInput step={5} defaultValue={15} min={2} id='ageEnv'>
+                            <NumberInput step={5} defaultValue={17} min={2} id='ageEnv'>
                                 <NumberInputField />
                                 <NumberInputStepper>
                                     <NumberIncrementStepper />
@@ -149,7 +149,7 @@ export const EnviroForm = () => {
                             <FormHelperText mb='2'>
                                 Your height in meters (m). To convert from feet to meters, use <Link href='https://www.feettometres.com/' color='blue.300' isExternal>feettometres.com</Link>
                             </FormHelperText>
-                            <NumberInput id='heightEnv' defaultValue={1.75}>
+                            <NumberInput id='heightEnv' defaultValue={1.85}>
                                 <NumberInputField />
                                 <NumberInputStepper>
                                     <NumberIncrementStepper />
@@ -163,7 +163,7 @@ export const EnviroForm = () => {
                             <FormHelperText mb='2'>
                                 Your weight in kilograms (kg). To convert from lb to kg, use <Link href='https://www.unitconverters.net/weight-and-mass/lbs-to-kg.htm' color='blue.300' isExternal>UnitConverters.net</Link>
                             </FormHelperText>
-                            <NumberInput min={2} defaultValue={60} id='weightEnv'>
+                            <NumberInput min={2} defaultValue={79} id='weightEnv'>
                                 <NumberInputField />
                                 <NumberInputStepper>
                                     <NumberIncrementStepper />
@@ -201,8 +201,9 @@ export const EnviroForm = () => {
                                 Do you exercise for at least 30 minutes a day?
                             </FormHelperText>
                             <Select id='activeEnv'>
-                                <option value='0'>No</option>
                                 <option value='1'>Yes</option>
+
+                                <option value='0'>No</option>
                             </Select>
                         </FormControl>
 
