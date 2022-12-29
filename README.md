@@ -1,8 +1,5 @@
 # UniHeart ❤️
 
-**Team Members**:
-Ganning Xu, Jacob Van Meter, Ivan Zheng, Allison Zhang, Max Caza
-
 Each year, 659,000 people in the United States alone die from heart disease, which makes heart disease the leading cause of death. **UniHeart** is a web app that allows for the early detection of heart disease using 2 machine learning algorithms, all coded from scratch. 
 
 ## Features
